@@ -27,18 +27,7 @@ class BaseHandler(webapp2.RequestHandler):
         return self.response.out.write(template.render(params))
 
 def main():
-    secret = 7
 
-    while True:
-        guess = int(raw_input("Guess the secret number from 1 to 20: "))
-
-        if guess == secret:
-            print "Congratulations! Its number %s! :)" % secret
-            break
-        elif guess > secret:
-            print "Try something lower."
-        elif guess < secret:
-            print "Try something higher."
 
 
 class MainHandler(BaseHandler):
@@ -46,10 +35,19 @@ class MainHandler(BaseHandler):
         return self.render_template("index.html")
 
     def post(self):
-        dodatno = 'Uporabnik je vpisal: '
-        rezultat = self.request.get('vnos')
-        skupaj = dodatno + rezultat
-        return self.write(skupaj)
+        secret = 7
+        guess = int(self.request.get('guess'))
+
+        result = None
+
+        if secret == guess:
+            result = "Congratulations! Its number %s! :)" % secret
+        elif secret > guess:
+            result = "Sorry. Try something lower."
+        elif guess < secret:
+            result = "Sorry. Try something higher."
+
+        
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
