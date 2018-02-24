@@ -47,7 +47,10 @@ class MainHandler(BaseHandler):
         elif guess < secret:
             result = "Sorry. Try something higher."
 
-        
+
+        params = {'result': result}
+
+        return self.render_template('result.html', params=params)
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
