@@ -1,6 +1,6 @@
 # About
 
-Basic GAE project with Jinja templating engine
+A basic guess the secret number GAE project with Jinja templating engine
 
 # Usage
 
