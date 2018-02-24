@@ -26,10 +26,6 @@ class BaseHandler(webapp2.RequestHandler):
         template = jinja_env.get_template(view_filename)
         return self.response.out.write(template.render(params))
 
-def main():
-
-
-
 class MainHandler(BaseHandler):
     def get(self):
         return self.render_template("index.html")
