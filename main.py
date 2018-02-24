@@ -38,9 +38,9 @@ class MainHandler(BaseHandler):
 
         if secret == guess:
             result = "Congratulations! Its number %s! :)" % secret
-        elif secret > guess:
+        elif secret < guess:
             result = "Sorry. Try something lower."
-        elif guess < secret:
+        elif secret > guess:
             result = "Sorry. Try something higher."
 
 
